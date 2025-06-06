@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Fake Login Page</title></head>
+<body style="font-family:sans-serif; text-align:center; padding-top:50px;">
+  <h1>Fake Login Page</h1>
+  <button id="login-btn" style="padding:12px 24px; font-size:16px;">
+    Log In
+  </button>
+  <script>
+    document.getElementById("login-btn").addEventListener("click", () => {
+      const params = new URLSearchParams(location.search);
+      const redirect = params.get("redirect_uri");
+      if (!redirect) {
+        alert("Missing redirect_uri!");
+        return;
+      }
+      location.href = `${decodeURIComponent(redirect)}?token=fake123&status=success`;
+    });
+  </script>
+</body>
+</html>
